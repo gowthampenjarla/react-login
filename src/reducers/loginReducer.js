@@ -1,4 +1,9 @@
-import { GET_USER, SET_LOADING, LOGIN_ERROR } from "../actions/types";
+import {
+  GET_USER,
+  SET_LOADING,
+  LOGIN_ERROR,
+  LOGOUT_USER,
+} from "../actions/types";
 
 const initialState = {
   loginUser: null,
@@ -27,6 +32,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        isUserLoggedIn: false,
+        loginUser: null,
       };
 
     default:

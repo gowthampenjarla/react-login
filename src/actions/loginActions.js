@@ -1,4 +1,4 @@
-import { GET_USER, SET_LOADING, LOGIN_ERROR } from "./types";
+import { GET_USER, SET_LOADING, LOGIN_ERROR, LOGOUT_USER } from "./types";
 
 export const getLogin = (user) => async (dispatch) => {
   try {
@@ -24,6 +24,12 @@ export const getLogin = (user) => async (dispatch) => {
       payload: err.response.statusText,
     });
   }
+};
+
+export const logoutuser = () => {
+  return {
+    type: LOGOUT_USER,
+  };
 };
 
 // Set loading to true

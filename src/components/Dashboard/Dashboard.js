@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import {} from "../../actions/loginActions";
 import { getUsers } from "../../actions/dashboardActions";
 import Loader from "react-loader-spinner";
 import Table from "react-bootstrap/Table";
@@ -14,9 +15,12 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getUsers();
-    console.log(users);
   }, []);
-  //   !isUserLoggedIn && history.push("/");
+  useEffect(() => {
+    !isUserLoggedIn && history.push("/");
+  }, [isUserLoggedIn]);
+
+  const logoutHandler = () => {};
   if (loading) {
     return (
       <Loader
@@ -30,85 +34,35 @@ const Dashboard = ({
   } else {
     return (
       <div>
-        {/* <Navbar user={loginUser} /> */}
+        {loginUser && <Navbar user={loginUser} logoutUser={logoutHandler} />}
         <div className='container'>
-          {/* <table className='table'>
-                  <thead>
-                    <tr>
-                      <th scope='col'>#</th>
-                      <th scope='col'>Name</th>
-                      <th scope='col'>Age</th>
-                      <th scope='col'>Gender</th>
-                      <th scope='col'>Email</th>
-                      <th scope='col'>Phone Number</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {users.map((user) => {
-                      <tr>
-                        <th scope='row'>1</th>
-                        <td>{user.id}</td>
-                        <td>{user.name}</td> <td>{user.age}</td> <td>{user.gender}</td>{" "}
-                        <td>{user.email}</td> <td>{user.phoneNo}</td>
-                      </tr>;
-                    })}
-                  </tbody>
-                </table> */}
+          <h2 className='my-3'>Users List</h2>
           {users.length > 0 && (
-            <table className='table'>
+            <Table striped bordered hover variant='dark'>
               <thead>
                 <tr>
-                  <th scope='col'>#</th>
-                  <th scope='col'>Name</th>
-                  <th scope='col'>Age</th>
-                  <th scope='col'>Gender</th>
-                  <th scope='col'>Email</th>
-                  <th scope='col'>Phone Number</th>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
                 </tr>
               </thead>
               <tbody>
-                {users.map((user) => {
-                  <tr>
-                    <th scope='row'>1</th>
+                {users.map((user) => (
+                  <tr key={user.id}>
                     <td>{user.id}</td>
-                    <td>{user.name}</td> <td>{user.age}</td>{" "}
-                    <td>{user.gender}</td> <td>{user.email}</td>{" "}
+                    <td>{user.name}</td>
+                    <td>{user.age}</td>
+                    <td>{user.gender}</td>
+                    <td>{user.email}</td>
                     <td>{user.phoneNo}</td>
-                  </tr>;
-                })}
+                  </tr>
+                ))}
               </tbody>
-            </table>
+            </Table>
           )}
-          {/* <Table striped bordered hover variant='dark'>
-                <thead>
-            <tr>
-              <th>#</th>
-              {users.from({ length: 12 }).map((_, index) => (
-                <th key={index}>Table heading</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              {Array.from({ length: 12 }).map((_, index) => (
-                <td key={index}>Table cell {index}</td>
-              ))}
-            </tr>
-            <tr>
-              <td>2</td>
-              {Array.from({ length: 12 }).map((_, index) => (
-                <td key={index}>Table cell {index}</td>
-              ))}
-            </tr>
-            <tr>
-              <td>3</td>
-              {Array.from({ length: 12 }).map((_, index) => (
-                <td key={index}>Table cell {index}</td>
-              ))}
-            </tr>
-          </tbody>
-                </Table> */}
         </div>
       </div>
     );

@@ -5,3 +5,16 @@
 .form-group {
   margin-bottom: 2rem;
 }
+
+.spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.card {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}

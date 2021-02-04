@@ -7,7 +7,7 @@ export const getUsers = () => async (dispatch) => {
     const data = await res.json();
     dispatch({
       type: GET_USERS_DETAILS,
-      payload: data,
+      payload: data.user,
     });
   } catch (err) {
     dispatch({
