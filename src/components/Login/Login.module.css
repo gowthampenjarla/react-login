@@ -1,0 +1,12 @@
+label {
+  float: left;
+}
+
+.errorMessage {
+  float: left;
+  font-size: small;
+  color: red;
+}
+.errorMessage_be {
+  color: red;
+}
