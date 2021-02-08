@@ -10,7 +10,11 @@ const Navbar = ({ user, logoutUser }) => {
 
           <ul className='navbar-nav ml-auto mt-2 mt-lg-0'>
             <li className='nav-item'>
-              <a href='' onClick={logoutUser}>
+              <a
+                className='btn'
+                style={{ color: "white" }}
+                onClick={logoutUser}
+              >
                 Logout
               </a>
             </li>

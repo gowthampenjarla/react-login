@@ -26,7 +26,7 @@ export const getLogin = (user) => async (dispatch) => {
   }
 };
 
-export const logoutuser = () => {
+export const userLogout = () => {
   return {
     type: LOGOUT_USER,
   };

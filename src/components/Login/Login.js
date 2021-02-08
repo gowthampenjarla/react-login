@@ -6,7 +6,6 @@ import styles from "./Login.module.css";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
 import { getLogin } from "../../actions/loginActions";
-import { Redirect, withRouter } from "react-router-dom";
 
 const Login = ({
   login: { loginUser, isUserLoggedIn, loading, error },

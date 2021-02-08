@@ -33,11 +33,12 @@ export default (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
+
     case LOGOUT_USER:
       return {
         ...state,
-        isUserLoggedIn: false,
         loginUser: null,
+        isUserLoggedIn: false,
       };
 
     default:

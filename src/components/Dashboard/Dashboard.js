@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {} from "../../actions/loginActions";
+import { userLogout } from "../../actions/loginActions";
 import { getUsers } from "../../actions/dashboardActions";
 import Loader from "react-loader-spinner";
 import Table from "react-bootstrap/Table";
@@ -12,6 +12,7 @@ const Dashboard = ({
   dashboard: { users, loading },
   history,
   getUsers,
+  userLogout,
 }) => {
   useEffect(() => {
     getUsers();
@@ -20,7 +21,11 @@ const Dashboard = ({
     !isUserLoggedIn && history.push("/");
   }, [isUserLoggedIn]);
 
-  const logoutHandler = () => {};
+  const logoutHandler = () => {
+    console.log("handler");
+    userLogout();
+  };
+
   if (loading) {
     return (
       <Loader
@@ -75,6 +80,6 @@ const mapStateToProps = (state) => ({
   dashboard: state.dashboard,
 });
 
-const mapDispatchToProps = { getUsers };
+const mapDispatchToProps = { getUsers, userLogout };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
